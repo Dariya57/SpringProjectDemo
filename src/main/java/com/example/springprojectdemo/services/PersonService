@@ -1,8 +1,8 @@
-package com.example.springprojectdemo.repositories;
+package com.example.springexampleprojectdemo.services;
 
-import com.example.springprojectdemo.models.Person;
-import com.example.springprojectdemo.repositories.PersonRepositoryInterface;
-import com.example.springprojectdemo.services.interfaces.PersonServiceInterface;
+import com.example.springexampleprojectdemo.models.Person;
+import com.example.springexampleprojectdemo.repositories.PersonRepositoryInterface;
+import com.example.springexampleprojectdemo.services.interfaces.PersonServiceInterface;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -36,4 +36,3 @@ public class PersonService implements PersonServiceInterface {
         return repo.findBySurname(surname);
     }
 }
-

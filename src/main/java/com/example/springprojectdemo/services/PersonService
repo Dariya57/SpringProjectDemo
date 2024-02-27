@@ -1,0 +1,38 @@
+package com.example.springprojectdemo.repositories;
+
+import kz.aitu.springprojectdemo.models.Person;
+import kz.aitu.springprojectdemo.repositories.PersonRepositoryInterface;
+import kz.aitu.springprojectdemo.services.interfaces.PersonServiceInterface;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class PersonService implements PersonServiceInterface {
+
+    private final PersonRepositoryInterface repo;
+
+    public PersonService(PersonRepositoryInterface repo) {
+        this.repo = repo;
+    }
+
+    @Override
+    public List<Person> getAll() {
+        return repo.findAll();
+    }
+
+    @Override
+    public Person getById(int id) {
+        return repo.findById(id).orElse(null);
+    }
+
+    @Override
+    public Person create(Person person) {
+        return repo.save(person);
+    }
+
+    @Override
+    public List<Person> getBySurname(String surname) {
+        return repo.findBySurname(surname);
+    }
+}

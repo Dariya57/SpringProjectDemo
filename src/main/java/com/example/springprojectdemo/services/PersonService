@@ -1,8 +1,8 @@
 package com.example.springprojectdemo.repositories;
 
-import kz.aitu.springprojectdemo.models.Person;
-import kz.aitu.springprojectdemo.repositories.PersonRepositoryInterface;
-import kz.aitu.springprojectdemo.services.interfaces.PersonServiceInterface;
+import com.example.springprojectdemo.models.Person;
+import com.example.springprojectdemo.repositories.PersonRepositoryInterface;
+import com.example.springprojectdemo.services.interfaces.PersonServiceInterface;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

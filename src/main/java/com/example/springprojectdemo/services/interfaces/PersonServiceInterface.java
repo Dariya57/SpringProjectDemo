@@ -1,4 +1,4 @@
-package com.example.springprojectdemo.interfaces;
+package com.example.springprojectdemo.services.interfaces;
 
 import com.example.springprojectdemo.models.Person;
 

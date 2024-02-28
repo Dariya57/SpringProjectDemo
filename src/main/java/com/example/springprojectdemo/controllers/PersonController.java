@@ -1,11 +1,11 @@
 package com.example.springprojectdemo.controllers;
 
+import com.example.springprojectdemo.services.interfaces.PersonServiceInterface;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.springprojectdemo.models.Person;
-import com.example.springprojectdemo.services.interfaces.UserServiceInterface;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -43,11 +43,11 @@ public class PersonController {
 
     @PostMapping("/")
     public ResponseEntity<Person> create(@RequestBody Person person){
-        Person createdUser = service.create(person);
+        Person createdPerson = service.create(person);
         if(createdPerson == null)
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 
-        return new ResponseEntity<>(createdUser, HttpStatus.CREATED); //201
+        return new ResponseEntity<>(createdPerson, HttpStatus.CREATED); //201
     }
 
     @GetMapping("/surname/{person_surname}")

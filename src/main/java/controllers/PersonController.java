@@ -1,6 +1,6 @@
 package modules;
 
-public class Person {
+public class PersonController {
     private int id;
     private String name;
     private int age;

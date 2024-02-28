@@ -2,7 +2,7 @@ package modules;
 
 import java.time.LocalDate;
 
-public class Film {
+public class Films {
 
     private int id;
 

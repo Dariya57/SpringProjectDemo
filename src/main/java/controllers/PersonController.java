@@ -1,66 +1,54 @@
-package modules;
+package com.example.springprojectdemo.controllers;
 
+import com.example.springprojectdemo.models.Person;
+import com.example.springprojectdemo.services.interfaces.PersonServiceInterface;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("users")
 public class PersonController {
-    private int id;
-    private String name;
-    private int age;
-    private String email;
 
-    // Constructor without id (used to create a new person before saving to the database)
-    public Person(String name, int age, String email) {
-        setName(name);
-        setAge(age);
-        setEmail(email);
+    private final PersonServiceInterface service;
+
+    public PersonController(PersonServiceInterface service) {
+        this.service = service;
     }
 
-    // Constructor with id (used when obtaining data about a person from the database)
-    public Person(int id, String name, int age, String email) {
-        this(name, age, email); // Calls the first constructor to set name, age and email
-        setId(id); // Additionally sets the person's id
+    @GetMapping("hello")
+    public String sayHello(){
+        return "Hello World";
     }
 
-    // Getters and setters
-    public int getId() {
-        return id;
+    @GetMapping("/")
+    public List<Person> getAll(){
+        return service.getAll();
     }
 
-    public void setId(int id) {
-        this.id = id;
+    @GetMapping("/{person_id}")
+    public ResponseEntity<Person> getById(@PathVariable("person_id") int id){
+        Person person = service.getById(id);
+        if(person == null)
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND); //404
+
+        return new ResponseEntity<>(person, HttpStatus.OK); //200
     }
 
-    public String getName() {
-        return name;
+    @PostMapping("/")
+    public ResponseEntity<User> create(@RequestBody Person person){
+        Person createdPerson = service.create(person);
+        if(createdPerson == null)
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+
+        return new ResponseEntity<>(createdUser, HttpStatus.CREATED); //201
     }
 
-    public void setName(String name) {
-        this.name = name;
+    @GetMapping("/surname/{person_surname}")
+    public List<Person> getAllBySurname(@PathVariable("person_surname") String surname){
+        return service.getBySurname(surname);
     }
 
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    // Overridden toString() method for beautifully printing information about a person
-    @Override
-    public String toString() {
-        return "Person{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                ", email='" + email + '\'' +
-                '}';
-    }
 }
-

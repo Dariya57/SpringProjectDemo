@@ -1,6 +1,5 @@
 package controllers;
 
-import modules.Ticket;
 import repositories.interfaces.ITicketRepository;
 
 import java.util.List;

@@ -3,7 +3,7 @@ package models;
 import lombok.Getter;
 import lombok.Setter;
 
-public class Person package models;
+public class Person{ ;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

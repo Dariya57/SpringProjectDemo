@@ -27,8 +27,8 @@ public class Film {
 
     // Constructor with id, used when retrieving movie data from the database
     public Film(int id, String name, String ageCategory, String genre, int seatNumber, LocalDate day) {
-        this(name, ageCategory, genre, seatNumber, day); // Вызывает первый конструктор для установки name, ageCategory, genre, seatNumber и day
-        setId(id); // Дополнительно устанавливает id фильма
+        this(name, ageCategory, genre, seatNumber, day);
+        setId(id);
     }
 
     // Getters and setters

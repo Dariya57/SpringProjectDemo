@@ -8,5 +8,5 @@ public interface PersonServiceInterface {
     List<Person> getAll();
     Person getById(int id);
     Person create(Person person);
-    List<Person> getBySurname(String surname);
+    List<Person> getByName(String name);
 }

@@ -33,7 +33,7 @@ public class PersonService implements PersonServiceInterface {
     }
 
     @Override
-    public List<Person> getBySurname(String surname) {
-        return repo.findBySurname(surname);
+    public List<Person> getByName(String name) {
+        return repo.findByName(name);
     }
 }

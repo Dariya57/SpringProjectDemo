@@ -1,6 +1,6 @@
 package com.example.springprojectdemo.services;
 
-import com.example.springprojectdemo.models.Person;
+import models.Person;
 import com.example.springprojectdemo.repositories.PersonRepositoryInterface;
 import com.example.springprojectdemo.services.interfaces.PersonServiceInterface;
 import org.springframework.stereotype.Service;

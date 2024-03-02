@@ -1,5 +1,7 @@
-package modules;
+package com.example.springprojectdemo.models;
 
+import jakarta.persistence.*;
+import lombok.Data;
 import java.time.LocalDate;
 
 public class Film {

@@ -1,65 +1,32 @@
 package com.example.springprojectdemo.models;
 
+import jakarta.persistence.*;
+import lombok.Data;
+import java.time.LocalDate;
+import java.time.LocalTime;
+
+@Data
+@Entity
+@Table(name = "ticket")
 public class Ticket {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String time;
-    private String date;
+
+    @Column(name = "time")
+    private LocalTime time;
+
+    @Column(name = "date")
+    private LocalDate date;
+
+    @Column(name = "price")
     private double price;
+
+    @Column(name = "personId")
     private int personId;
+
+    @Column(name = "personName")
     private String personName;
 
-    public Ticket(int id, String time, String date) {
-        this.id = id;
-        this.time = time;
-        this.date = date;
-    }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public int getPersonId() {
-        return personId;
-    }
-
-    public void setPersonId(int personId) {
-        this.personId = personId;
-    }
-
-    public String getPersonName() {
-        return personName;
-    }
-
-    public void setPersonName(String personName) {
-        this.personName = personName;
-    }
 }
-

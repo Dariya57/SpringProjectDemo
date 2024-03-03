@@ -1,6 +1,6 @@
 package com.example.springprojectdemo.services.interfaces;
 
-import models.Person;
+import com.example.springprojectdemo.models.Person;
 import java.util.List;
 
 public interface PersonServiceInterface {

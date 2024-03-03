@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import java.time.LocalDate;
 
-public class Film {
+public class Films {
 
     private int id;
 
@@ -19,7 +19,7 @@ public class Film {
     private LocalDate day;
 
     // Constructor without id, used to create new movies before saving them to the database
-    public Film(String name, String ageCategory, String genre, int seatNumber, LocalDate day) {
+    public Films(String name, String ageCategory, String genre, int seatNumber, LocalDate day) {
         setName(name);
         setAgeCategory(ageCategory);
         setGenre(genre);
@@ -28,7 +28,7 @@ public class Film {
     }
 
     // Constructor with id, used when retrieving movie data from the database
-    public Film(int id, String name, String ageCategory, String genre, int seatNumber, LocalDate day) {
+    public Films(int id, String name, String ageCategory, String genre, int seatNumber, LocalDate day) {
         this(name, ageCategory, genre, seatNumber, day); // Вызывает первый конструктор для установки name, ageCategory, genre, seatNumber и day
         setId(id); // Дополнительно устанавливает id фильма
     }

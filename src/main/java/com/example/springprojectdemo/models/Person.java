@@ -1,4 +1,4 @@
-package models;
+package com.example.springprojectdemo.models;
 
 import jakarta.persistence.*;
 import lombok.Data;

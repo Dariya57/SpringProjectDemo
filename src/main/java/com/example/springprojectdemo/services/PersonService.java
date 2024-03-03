@@ -24,7 +24,7 @@ public class PersonService implements PersonServiceInterface {
 
     @Override
     public Person getById(int id) {
-        return repo.findById(id).orElse(null);
+        return repo.findById(id);
     }
 
     @Override

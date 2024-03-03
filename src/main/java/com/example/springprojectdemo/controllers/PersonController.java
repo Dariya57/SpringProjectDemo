@@ -14,17 +14,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("person")
-public class PersonController {
+public class PersonController{
 
     private final PersonServiceInterface service;
 
     public PersonController(PersonServiceInterface service) {
         this.service = service;
-    }
-
-    @GetMapping("hello")
-    public String sayHello(){
-        return "Hello World";
     }
 
     @GetMapping("/")
@@ -47,7 +42,7 @@ public class PersonController {
         if(createdPerson == null)
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 
-        return new ResponseEntity<>(createdPerson, HttpStatus.CREATED); //201
+        return new ResponseEntity<>(createdPerson,HttpStatus.CREATED); //201
     }
 
     @GetMapping("/name/{person_name}")

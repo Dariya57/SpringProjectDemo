@@ -4,44 +4,62 @@ import com.example.springprojectdemo.services.interfaces.TicketServiceInterface;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.example.springprojectdemo.models.Ticket;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalTime;
 import java.util.List;
 
-import com.example.springprojectdemo.repositories.TicketRepositoryInterface;
 
-import java.util.List;
 
-public class TicketController {
-    // Repository for interacting with ticket data
-    private final TicketRepositoryInterface repo;
+@RestController
+@RequestMapping("ticket")
+public class TicketController{
+    private final TicketServiceInterface service;
 
-    // Constructor to initialize a ticket controller with a ticket repository
-    public TicketController(TicketRepositoryInterface repo) {
-        this.repo = repo;
+    public TicketController(TicketServiceInterface service) {
+        this.service = service;
     }
 
-    // Receives one ticket by its ID. Returns a string representation of the ticket or a message indicating that the ticket was not found.
-    public String getTicket(int ticketId) {
-        Ticket ticket = repo.getTicket(ticketId); // Trying to get a ticket from a repository
-
-        // Conditional check to return ticket details or report ticket not found
-        return (ticket == null ? "Ticket not found!" : ticket.toString());
+    @GetMapping("hello")
+    public String sayHello() {
+        return "Hello World";
     }
 
-    // Gets all tickets from the repository and returns them as a string.
-    public String getAllTickets() {
-        List<Ticket> tickets = repo.getAllTickets(); //Getting all tickets
-        // StringBuilder for accumulating ticket information
-        StringBuilder response = new StringBuilder();
-        for (Ticket ticket : tickets) {
-            response.append(ticket.toString()).append("\n"); // Adding information about each ticket
-        }
+    @GetMapping("/")
+    public List<Ticket> getAll() {
+        return service.getAll();
+    }
 
-        return response.toString(); // Returning the collected ticket information string
+    @GetMapping("/{ticket_id}")
+    public ResponseEntity<Ticket> getById(@PathVariable("ticket_id") int id) {
+        Ticket ticket = service.getById(id);
+        if (ticket == null)
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND); //404
+
+        return new ResponseEntity<>(ticket, HttpStatus.OK); //200
+    }
+
+    @PostMapping("/")
+    public ResponseEntity<Ticket> create(@RequestBody Ticket ticket) {
+        Ticket createdTicket = service.create(ticket);
+        if (createdTicket == null)
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+
+        return new ResponseEntity<>(createdTicket, HttpStatus.CREATED); //201
+    }
+
+    @GetMapping("/time/{ticket_time}")
+    public List<Ticket> getAllByTime(@PathVariable("ticket_time") LocalTime time) {
+
+        return service.getByTime(time);
     }
 }
+//    @DeleteMapping("{id}")
+//    public ResponseEntity<String> delete(@PathVariable("ticket_id") int id){
+//        Ticket.delete(todoId);
+//        return ResponseEntity.ok("Todo deleted successfully!.");
+//
+//    }

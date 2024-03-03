@@ -2,9 +2,9 @@ package com.example.springprojectdemo.models;
 
 import jakarta.persistence.*;
 import lombok.Data;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
-
 @Data
 @Entity
 @Table(name = "ticket")
@@ -22,11 +22,9 @@ public class Ticket {
     @Column(name = "price")
     private double price;
 
-    @Column(name = "personId")
-    private int personId;
+    @Column(name = "id_person")
+    private int id_person;
 
-    @Column(name = "personName")
-    private String personName;
-
-
+    @Column(name = "name_person")
+    private String name_person;
 }

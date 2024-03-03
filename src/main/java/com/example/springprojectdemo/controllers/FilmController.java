@@ -28,7 +28,7 @@ public List<Films> getAll(){
 
 @GetMapping("/{film_id}")
 public ResponseEntity<Films> getById(@PathVariable("film_id") int id){
-    Films films = service.getById(id);
+    Films films = (Films) service.getById(id);
     if(films == null)
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
@@ -36,14 +36,6 @@ public ResponseEntity<Films> getById(@PathVariable("film_id") int id){
 }
 
 @PostMapping("/")
-public ResponseEntity<Films> create(@RequestBody Films films){
-    Films createdFilm = service.create(films);
-    if(createdFilm == null)
-        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-
-    return new ResponseEntity<>(createdFilm, HttpStatus.CREATED);
-}
-
 @GetMapping("/genre/{film_genre}")
 public List<Films> getAllByGenre(@PathVariable("film_genre") String genre){
     return service.getByGenre(genre);

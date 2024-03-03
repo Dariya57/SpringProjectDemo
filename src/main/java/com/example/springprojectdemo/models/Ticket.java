@@ -1,10 +1,6 @@
 package com.example.springprojectdemo.models;
 
-import jakarta.persistence.*;
-import lombok.Data;
-import java.time.LocalDate;
-
-public class Tickets {
+public class Ticket {
     private int id;
     private String time;
     private String date;
@@ -12,7 +8,7 @@ public class Tickets {
     private int personId;
     private String personName;
 
-    public Tickets(int id, String time, String date) {
+    public Ticket(int id, String time, String date) {
         this.id = id;
         this.time = time;
         this.date = date;
@@ -66,4 +62,4 @@ public class Tickets {
         this.personName = personName;
     }
 }
-    
+

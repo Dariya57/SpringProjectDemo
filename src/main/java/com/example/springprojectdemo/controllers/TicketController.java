@@ -5,23 +5,23 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.springprojectdemo.models.Tickets;
+import com.example.springprojectdemo.models.Ticket;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import repositories.interfaces.TicketRepository;
+import com.example.springprojectdemo.repositories.TicketRepositoryInterface;
 
 import java.util.List;
 
 public class TicketController {
     // Repository for interacting with ticket data
-    private final ITicketRepository repo;
+    private final TicketRepositoryInterface repo;
 
     // Constructor to initialize a ticket controller with a ticket repository
-    public TicketController(ITicketRepository repo) {
+    public TicketController(TicketRepositoryInterface repo) {
         this.repo = repo;
     }
 
